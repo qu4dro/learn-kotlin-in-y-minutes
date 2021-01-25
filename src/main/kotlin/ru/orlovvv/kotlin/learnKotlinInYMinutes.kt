@@ -325,6 +325,23 @@ fun main(args: Array<String>) {
         return this.filter { it != c }
     }
     println("Hello, world!".remove('o'))
+
+    //Working with collections
+    val people = mutableMapOf<String, Int>("Fred" to 30, "Ann" to 23)
+    println(people.map { "${it.key} is ${it.value}" }.joinToString(", "))
+    println(people.filter { it.key.length < 30 }.toString())
+
+    //Lambdas
+    val triple: (Int) -> Int = { a: Int -> a * 3 }
+    println(triple(5))
+    val triple2: (Int) -> Int = { it * 3 }
+
+    //Higher-order functions
+    //This just means passing a function (in this case a lambda)
+    //to another function, or returning a function from another function.
+    val peopleNames = listOf("Fred", "Ann", "Barbara", "Joe")
+    println(peopleNames.sortedWith { str1: String, str2: String -> str1.length - str2.length })
+
 }
 
 // Enum classes are similar to Java enum types.
@@ -426,4 +443,6 @@ fun operatorOverloadingDemo() {
     counter1() // => The value of the counter is 36
     println(-counter2) // => Counter(value=-5)
 }
+
+
 
