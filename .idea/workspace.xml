@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caa385-8baa-409f-b44a-46c637e26b21" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/orlovvv/kotlin/learnKotlinInYMinutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/orlovvv/kotlin/learnKotlinInYMinutes.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

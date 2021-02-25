@@ -1,4 +1,4 @@
-package ru.orlovvv.kotlin.csc_lections.lection4_generics
+package ru.orlovvv.kotlin.csc_lections.lection5_generics
 
 //параметрический полиморфизм
 

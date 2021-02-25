@@ -1,6 +1,5 @@
-package ru.orlovvv.kotlin.csc_lections.lection3_fp_in_kotlin
+package ru.orlovvv.kotlin.csc_lections.lection4_fp_in_kotlin
 
-import ru.orlovvv.kotlin.csc_lections.lection4_generics.anyToString
 import java.util.*
 import javax.lang.model.type.ErrorType
 
