@@ -6,40 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caa385-8baa-409f-b44a-46c637e26b21" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/META-INF/learn-kotlin-in-y-minutes.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/Counter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/EnumExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/EnumExample2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$5$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$7$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$7$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$DataClassExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$ExampleClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$MutableDataClassExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$fooSequence$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$notEven$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$notOdd$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$notPositive$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$notPositive2$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt$main$notZero$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/LearnKotlinInYMinutesKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/ObjectExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/csc_lections/lection3_class_part2/InfoMsg.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/csc_lections/lection3_class_part2/Jsonable$DefaultImpls.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/csc_lections/lection3_class_part2/Jsonable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/csc_lections/lection3_class_part2/LoginMsg.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/csc_lections/lection3_class_part2/MyPOKO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/csc_lections/lection3_class_part2/SignUpMsg.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/learn-kotlin-in-y-minutes/ru/orlovvv/kotlin/csc_lections/lection3_class_part2/TaskKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/orlovvv/kotlin/csc_lections/lection5_generics/taskFromLastLection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/orlovvv/kotlin/csc_lections/lection5_generics/task.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
