@@ -450,5 +450,57 @@ fun operatorOverloadingDemo() {
     println(-counter2) // => Counter(value=-5)
 }
 
+// Изолированные классы
+/* Изолированные классы используются для ограниченных иерархий классов,
+   когда значение может иметь тип только из ограниченного набора, и никакой другой.
+   Они являются, по сути, расширением enum классов: набор значений enum типа также
+   ограничен, но каждая enum-константа существует только в единственном экземпляре, в то
+   время как наследник изолированного класса может иметь множество экземпляров, которые могут
+   нести в себе какое-то состояние.
 
+   Изолированный класс может иметь наследников, но все они должны быть объявлены в том же файле, что
+   и сам изолированный класс.
+ */
 
+sealed class Expr
+data class Const(val number: Double) : Expr()
+data class Sum(val e1: Expr, val e2: Expr) : Expr()
+object NotANumber : Expr()
+
+fun eval(expr: Expr): Double = when (expr) {
+    is Const -> expr.number
+    is Sum -> eval(expr.e1) + eval(expr.e2)
+    NotANumber -> Double.NaN
+}
+
+// Сам по себе изолированный класс является абстрактным, он не может быть создан напрямую и может иметь абстрактные компоненты.
+// Ниже пример из лекций по котлину
+// Абстрактный класс, у которого может быть какое-то количество наследников
+// и они обязаны быть с ним в том же самом файле
+// Своя иарархия наследования с классами, но количество вариантов ты
+// задаешь сам, больше никто наследоваться не может
+sealed class HttpCodeEx(val code: Int, val msg: String) {
+    object OK : HttpCodeEx(200, "Ok")
+
+    class BAD_REQUEST(reason: String) : HttpCodeEx(400, reason)
+
+    class FORBIDDEN(reason: String) : HttpCodeEx(400, reason)
+
+    object I_M_A_TEAPOT : HttpCodeEx(418, "Some tea?") {
+        fun boilMeSomeWater(): Unit = TODO()
+    }
+
+    class INTERNAL_SERVER_ERROR(reason: String) : HttpCodeEx(400, reason)
+}
+
+enum class HttpCode(val code: Int) {
+    OK(200),
+    BAD_REQUEST(400),
+    FORBIDDEN(403),
+    I_M_A_TEAPOT(418) {
+        override fun isOfficial() = false
+    },
+    INTERNAL_SERVER_ERROR(500);
+
+    open fun isOfficial() = true
+}
