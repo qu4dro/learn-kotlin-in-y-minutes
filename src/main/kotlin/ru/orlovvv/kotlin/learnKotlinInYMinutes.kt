@@ -516,3 +516,15 @@ class Outer {
 }
 
 val demo = Outer.Nested().foo()
+
+// Внутренние классы
+// Класс может быть помечен как внутренний с помощью слова inner, тем самым он будет иметь доступ к членам
+// внешнего класса. Внутренние классы содержат ссылку на объект внешнего класса
+class Outer2 {
+    private val bar: Int = 1
+    inner class Inner {
+        fun foo() = bar
+    }
+}
+
+val demo2 = Outer2().Inner().foo()
