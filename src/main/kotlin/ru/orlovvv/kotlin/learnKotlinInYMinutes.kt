@@ -504,3 +504,15 @@ enum class HttpCode(val code: Int) {
 
     open fun isOfficial() = true
 }
+
+// Вложенные классы
+// Классы могут быть вложены в другие классы
+
+class Outer {
+    private val bar: Int = 1
+    class Nested {
+        fun foo() = 2
+    }
+}
+
+val demo = Outer.Nested().foo()
