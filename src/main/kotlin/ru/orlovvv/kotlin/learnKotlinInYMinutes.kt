@@ -6,6 +6,9 @@ Multi-line comments look like this.
 // The "package" keyword works in the same way as in Java.
 package ru.orlovvv.kotlin
 
+import java.util.function.BinaryOperator
+import java.util.function.IntBinaryOperator
+
 /*
 The entry point to a Kotlin program is a function named "main".
 The function is passed an array containing any command-line arguments.
@@ -510,6 +513,7 @@ enum class HttpCode(val code: Int) {
 
 class Outer {
     private val bar: Int = 1
+
     class Nested {
         fun foo() = 2
     }
@@ -522,9 +526,64 @@ val demo = Outer.Nested().foo()
 // внешнего класса. Внутренние классы содержат ссылку на объект внешнего класса
 class Outer2 {
     private val bar: Int = 1
+
     inner class Inner {
         fun foo() = bar
     }
 }
 
 val demo2 = Outer2().Inner().foo()
+
+// Перечисляемые типы
+// Наиболее базовый пример использования enum - это реализация типобезопасных перечислений
+enum class Direction {
+    NORTH, SOUTH, WEST, EAST
+}
+// Каждая enum константа является объектом. При объявлении константы разделяются запятыми.
+
+// Инициализация
+// Так как константы являются экземплярами enum-класса, они могут быть инициализированны
+enum class Color(val rgb: Int) {
+    RED(0xFF0000),
+    GREEN(0x00FF00),
+    BLUE(0x0000FF)
+}
+
+// Реализация интерфейсов в классах enum
+/* Класс enum может реализовывать интерефейс (но не наследоваться от класса), предоставляя либо
+   единственную реализацию членов интерфейса для всех элементов enum, либо отдельные для каждого
+   элемента в своем анонимном классе.
+ */
+
+enum class IntArithmetics : BinaryOperator<Int>, IntBinaryOperator {
+    PLUS {
+        override fun apply(t: Int, u: Int): Int {
+            return t + u
+        }
+    },
+    TIMES {
+        override fun apply(t: Int, u: Int): Int {
+            return t * u
+        }
+    };
+
+    override fun applyAsInt(t: Int, u: Int): Int {
+        return apply(t, u)
+    }
+}
+
+// Работа с enum-константами
+// Enum классы имеют стандартные методы для вывода списка объявленных констант и получения по ее имени.
+EnumClass.valueOf(value: String): EnumClass
+EnumClass.values(): Array<EnumClass>
+// к константам в классе enum можно получить доступ универсальным способом, используя функции enumValues<T>() и enumValueOf<T>()
+enum class RGB2 { RED, GREEN, BLUE }
+
+inline fun <reified T : Enum<T>> printAllValues() {
+    print(enumValues<T>().joinToString { it.name })
+}
+
+printAllValues<RGB> // RED, GREEN, BLUE
+// каждая enum-константа имеет поля, в которых содержатся ее имя и порядковый номер в enum классе
+val name: String
+val ordinal: Int
