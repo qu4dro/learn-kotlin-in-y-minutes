@@ -6,6 +6,8 @@ Multi-line comments look like this.
 // The "package" keyword works in the same way as in Java.
 package ru.orlovvv.kotlin
 
+import java.awt.event.MouseAdapter
+import java.awt.event.MouseEvent
 import java.util.function.BinaryOperator
 import java.util.function.IntBinaryOperator
 
@@ -587,3 +589,42 @@ printAllValues<RGB> // RED, GREEN, BLUE
 // каждая enum-константа имеет поля, в которых содержатся ее имя и порядковый номер в enum классе
 val name: String
 val ordinal: Int
+
+// Анонимные объекты и объявление объектов
+/* Иногда необходимо получить экземпляр некоторого класса с незначительной молификацией,
+желательно без написания нового подкласса. Java справляется с этим с помощью вложенных анонимных
+классов. Kotlin улучшил этот подход.
+ */
+
+// Для того, чтобы создать объект анонимного класса, который наследуется от какого-то типа, используется конструкция:
+windows.addMouseListener(object : MouseAdapter() {
+    override fun mouseClicked(e: MouseEvent?) {
+        //
+    }
+
+    override fun mouseEntered(e: MouseEvent?) {
+    }
+})
+
+/* Если у супертипа есть конструктор, то в него должны быть переданы соответсвующие параметры.
+   Множество супертипов может быть указано после двоеточия в виде списка, заполненного через запятую:
+ */
+
+open class A(x: Int) {
+    open val y: Int = x
+}
+
+interface B { }
+
+val ab: A = object : A(1), B {
+    override val y = 15
+}
+
+// Если нужен просто объект без всяких родительских классов, то:
+val adHoc = object {
+    var x: Int = 0
+    var y: Int = 0
+}
+
+// Код внутри объявленного объекта может обращаться к переменны за скобками
+
