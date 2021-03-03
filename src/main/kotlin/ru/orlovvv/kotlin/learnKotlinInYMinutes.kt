@@ -10,6 +10,8 @@ import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
 import java.util.function.BinaryOperator
 import java.util.function.IntBinaryOperator
+import kotlin.properties.Delegates
+import kotlin.reflect.KProperty
 
 /*
 The entry point to a Kotlin program is a function named "main".
@@ -699,3 +701,123 @@ class MyClass3 {
      - вспомогательный объект инициализируется в момент, когда класс, к которому он относится,
        загружен и семантически совпадает со статическим инициализатором Java.
  */
+
+// СНОВА ПРО ДЕЛЕГАТЫ (ЕЩЕ ИНФОРМАЦИЯ ЕСТЬ В ФАЙЛЕ lection6_delegates)
+// Делегирование
+// Делегирование класса
+
+/* Шаблон делегирования является хорошей альтернативой наследованию, и Kotlin поддерживает
+   его нативно, освобождая вас от необходимости написания шаблонного кода. */
+
+interface Base {
+    fun print()
+}
+
+class BaseImpl(val x: Int) : Base {
+    override fun print() {
+        print(x)
+    }
+}
+
+class Derived(b: Base) : Base by b
+
+fun main() {
+    val b = BaseImpl(10)
+    Derived(b).print()
+}
+/* Ключевое слово by в оглавлении Derived, находящееся после типа делегируемого класса, гвоорит о том,
+   что объект b типа Base будет храниться внутри экземпляра Derived, и компилятор сгенерирует у Derived
+   соответсвующие методы из Base, которые при вызове будут переданы объекту b */
+
+// Делегированные свойства
+/* Существует несколько основных видов свойств, которые мы реализуем каждый раз вручную в случае их надобности.
+   Однако намного удобнее было бы реализовать их один раз и полодить в библиотеку. Примеры:
+      - ленивые свойства (lazy property): значение вычисляется один раз, при первом обращении
+      - свойства, на события об изменении которых можно подписаться (observable properties)
+      - свойства, хранимые в ассоциативном списке, а не отдельных полях */
+// Пример делегированных свойств
+class Example {
+    var p: String by Delegate()
+}
+// делагат не обязан реализовывать какой-то интерфейс, достаточно, чтобы у него были методы getValue(), setValue() с определенной сигнатурой
+class Delegate {
+    operator fun getValue(thisRef: Any?, property: KProperty<*>): String {
+        return "$thisRef, спасибо за делегирование мне '${property.name}"
+    }
+    operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String) {
+        print("$value было присвоено значение '${property.name}' в $thisRef")
+    }
+}
+
+// Стандартные делегаты
+// ленивые свойства
+
+/* Функция lazy() принимает лямбду и возвращает экземпляр класса Lazy<T>, который служит делегатом для
+   реализации ленивого свойства.
+   При первом вызове get() запускается лямбда выражение (переданное в lazy() в качестве аргумента),
+   затем значение запоминается и при следующих вызовах просто возвращается. */
+
+val lazyValue: String by lazy {
+    println("первое обращение")
+    "Hello"
+}
+
+fun main() {
+    println(lazyValue)
+    println(lazyValue)
+}
+// вывод
+// первое обращение
+// Hello
+// Hello
+
+// observable свойства
+/* Delegates.observable() принимает два аргумента: начальное и обработчик (лямбла), вызывающийся при изменении
+   свойства. У обработчика три параметра (описание свойства, старое значение, новое значение) */
+
+class User {
+    var name: String by Delegates.observable("no name") {
+        prop, old, new ->
+        println("$old -> $new")
+    }
+}
+fun main() {
+    val user = User()
+    user.name = "first"
+    user.name = "second"
+}
+// вывод
+// no name -> first
+// no name -> second
+
+// для запрета присваивания необходимо использовать функцию vetoable()
+
+// хранение свойств в ассоциативном массиве
+// это полезно в динамическом коде, например, при работе с JSON
+class User2(val map: Map<String, Any?>) {
+    val name: String by map
+    val age: Int     by map
+}
+
+// Конструктор принимает ассоциативный список
+val user2 = User2(mapOf(
+    "name" to "Peter",
+    "age" to 22
+))
+// делегированные свойства берут значения из этого ассоциативного списка (по строковым ключам)
+println(user2.name)
+println(user2.age)
+
+// Локальные делегированные свойства
+// можно объявить локальную переменную как делегированное свойство
+// например можно сделать локальную переменную ленивой
+
+fun example(computeFoo: () -> String) {
+    val memoizedFoo by lazy(computeFoo)
+
+    if (someCondition && memoizedFoo.isValid()) {
+        memoizedFoo.doSomething()
+    }
+}
+// локальная переменная будет вычеслена при первом обращении к ней
+// если условие someCondition будет ложно, то значени вообще не будет вычислено
