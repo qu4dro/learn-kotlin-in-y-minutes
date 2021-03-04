@@ -12,6 +12,7 @@ import java.util.function.BinaryOperator
 import java.util.function.IntBinaryOperator
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
+import kotlin.coroutines.*
 
 /*
 The entry point to a Kotlin program is a function named "main".
@@ -834,3 +835,62 @@ tailrec fun findFixPoint(x: Double = 1.0): Double =
 /* для соответствия требованиям модификатора tailrec, функция должна вызывать сама себя в качестве
    последней операции, которую она предпринимает.
  */
+
+// Функции области видимости
+// В котлине существую функции, единственная задача которых выполнение блока кода в контексте объекта
+/* Эти функции формируют временную область видимости для объекта, к которому были применены, и вызывают
+   код из лямбды. К объекту в этой области можно получить доступ без явного обращения к нему по имени
+
+   let, run, with, apply, also
+
+   отличия между ними в том, как объект становится доступным внутри блока и каков результат выражения.
+ */
+
+// пример
+
+data class Person(var name: String, var age: Int, var city: String) {
+    fun moveTo(newCity: String) { city = newCity }
+    fun incrementAge() { age ++ }
+}
+
+fun test() {
+    Person("Alice", 24, "Moscow").let {
+        println(it)
+        it.moveTo("Irkutsk")
+        it.incrementAge()
+    }
+}
+
+// apply и also возвращают объект контекста
+// let, run и with возвращают лямбды
+
+/* так как apply и also возвращают объект контекста, с их помощью можно вызвать длинную цепочку функций
+   относительно оригинального контекстного объекта.
+ */
+
+fun test2() {
+    val numberList = mutableListOf<Double>()
+    numberList.also { println("Заполнение списка") }
+        .apply {
+            add(2.5)
+            add(3.5)
+            add(2.1)
+        }
+        .also { println("Сортировка списка") }
+        .sort()
+    println(numberList)
+
+}
+
+/* let, run и with возвращают результат лямбды, поэтому вы можете использовать их при присваивании переменной
+   результата вычислений, либо использовать результат для последующего вызова цепочки операций
+ */
+
+fun test3() {
+    val numbers = mutableListOf("one", "two", "three")
+    val countEndsWithE = numbers.run {
+        add("four")
+        add("five")
+        count {it.endsWith("e") }
+    }
+}
